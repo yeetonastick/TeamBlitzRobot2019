@@ -22,7 +22,11 @@ public class DriveCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, Robot.oi.stickValue());	
+		RobotMap.backLeftMotor.follow(RobotMap.frontLeftMotor);
+		RobotMap.backRightMotor.follow(RobotMap.frontRightMotor);
+		RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, -.96 * (Robot.oi.leftYValue(.15) - Robot.oi.leftXValue(.30)));
+		RobotMap.frontRightMotor.set(ControlMode.PercentOutput, Robot.oi.leftYValue(.15) + Robot.oi.leftXValue(.30));
+		
 		}
 
 	@Override

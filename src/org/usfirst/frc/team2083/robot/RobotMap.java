@@ -16,8 +16,12 @@ public class RobotMap
 	 */
 	
 	// Drive System Motors
-	public static TalonSRX frontLeftMotor = new TalonSRX(3); // 3
-
+	public static TalonSRX frontLeftMotor = new TalonSRX(2); // 2
+	public static TalonSRX frontRightMotor = new TalonSRX(1); // 1
+	
+	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
+	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
+	
 	/*
 	 * Joystick IDs
 	 */

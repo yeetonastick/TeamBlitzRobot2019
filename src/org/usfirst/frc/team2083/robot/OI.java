@@ -20,14 +20,28 @@ public class OI
 
 	}
 
-	public double stickValue()
+	public double leftYValue(double threshold)
 	{ // Gets horizontal left joystick value (how far it is pushed left or right)
-		return xbox.getY();
+		if (Math.abs(xbox.getY()) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getY();
+		}
 	}
 
-	public double getMotorDriveForwardBackValue()
+	public double leftXValue(double threshold)
 	{ // Gets vertical left joystick value (how far it is pushed up or down)
-		return -xbox.getY();
+		if (Math.abs(xbox.getX()) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getX();
+		}
 	}
 
 	public static void OI_Method()
