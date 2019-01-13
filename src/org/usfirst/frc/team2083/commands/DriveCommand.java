@@ -24,9 +24,10 @@ public class DriveCommand extends CommandBase
 	{
 		RobotMap.backLeftMotor.follow(RobotMap.frontLeftMotor);
 		RobotMap.backRightMotor.follow(RobotMap.frontRightMotor);
-		RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, -.96 * (Robot.oi.leftYValue(.15) - Robot.oi.leftXValue(.30)));
-		RobotMap.frontRightMotor.set(ControlMode.PercentOutput, Robot.oi.leftYValue(.15) + Robot.oi.leftXValue(.30));
-		
+		RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, .96 * (Robot.oi.leftYValue(.25) - Robot.oi.leftXValue(.30)));
+		RobotMap.frontRightMotor.set(ControlMode.PercentOutput, -1 * (Robot.oi.leftYValue(.25) + Robot.oi.leftXValue(.30)));
+//		RobotMap.frontLeftMotor.set(ControlMode.Velocity, Robot.oi.leftYValue(.15) * 1);
+//		RobotMap.frontRightMotor.set(ControlMode.Velocity, 0);
 		}
 
 	@Override

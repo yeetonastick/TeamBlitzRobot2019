@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import org.usfirst.frc.team2083.commands.CommandBase;
 import org.usfirst.frc.team2083.commands.DriveCommand;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -48,6 +49,8 @@ public class Robot extends IterativeRobot
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
 
+		CameraServer.getInstance().startAutomaticCapture();
+		
 		driveCommand = new DriveCommand();
 		driveCommand.disableControl();
 	}
