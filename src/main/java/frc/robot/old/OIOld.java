@@ -3,19 +3,19 @@ package frc.robot.old;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
-public class OI
+public class OIOld
 {
-	public Joystick	xbox		= RobotMap.xBoxController;
-	Button			ButtonY		= RobotMap.ButtonY;
-	Button			ButtonA		= RobotMap.ButtonA;
-	Button			ButtonStart	= RobotMap.Start;
-	Button			ButtonBack	= RobotMap.Back;
-	Button			RBumper		= RobotMap.RBumper;
-	Button			LBumper		= RobotMap.LBumper;
-	Button			ButtonB		= RobotMap.ButtonB;
-	Button			ButtonX		= RobotMap.ButtonX;
+	public Joystick	xbox		= RobotMapOld.xBoxController;
+	Button			ButtonY		= RobotMapOld.ButtonY;
+	Button			ButtonA		= RobotMapOld.ButtonA;
+	Button			ButtonStart	= RobotMapOld.Start;
+	Button			ButtonBack	= RobotMapOld.Back;
+	Button			RBumper		= RobotMapOld.RBumper;
+	Button			LBumper		= RobotMapOld.LBumper;
+	Button			ButtonB		= RobotMapOld.ButtonB;
+	Button			ButtonX		= RobotMapOld.ButtonX;
 
-	public OI()
+	public OIOld()
 	{
 
 	}

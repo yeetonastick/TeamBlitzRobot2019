@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends TimedRobot
+public class RobotOld extends TimedRobot
 {
 	/*
 	 * This function is run when the robot is first started up and should be used
@@ -34,7 +34,7 @@ public class Robot extends TimedRobot
 	 */
 	
 	DriveCommand driveCommand;
-	public static OI oi;
+	public static OIOld oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser;
@@ -44,7 +44,7 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit()
 	{
-		oi = new OI();
+		oi = new OIOld();
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
 
@@ -87,7 +87,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		//RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, RobotMap.xBoxController.getX());		
-		SmartDashboard.putNumber("Joystick X value", RobotMap.xBoxController.getX());
+		SmartDashboard.putNumber("Joystick X value", RobotMapOld.xBoxController.getX());
 	}
 
 	@Override
@@ -97,6 +97,6 @@ public class Robot extends TimedRobot
 
 	void loadGameData()
 	{
-		RobotMap.gameData = DriverStation.getInstance().getGameSpecificMessage();
+		RobotMapOld.gameData = DriverStation.getInstance().getGameSpecificMessage();
 	}
 }
