@@ -1,6 +1,6 @@
-package org.usfirst.frc.team2083.subsytems;
+package frc.robot.subsystems;
 
-import org.usfirst.frc.team2083.robot.RobotMap;
+import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;

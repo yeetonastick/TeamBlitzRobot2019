@@ -1,6 +1,6 @@
-package org.usfirst.frc.team2083.commands;
+package frc.robot.commands;
 
-import org.usfirst.frc.team2083.subsytems.DriveSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

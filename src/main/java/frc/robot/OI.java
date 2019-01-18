@@ -11,6 +11,10 @@ package frc.robot;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+
 public class OI {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -39,4 +43,47 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  public Joystick	xbox		= RobotMap.xBoxController;
+	Button			ButtonY		= RobotMap.ButtonY;
+	Button			ButtonA		= RobotMap.ButtonA;
+	Button			ButtonStart	= RobotMap.Start;
+	Button			ButtonBack	= RobotMap.Back;
+	Button			RBumper		= RobotMap.RBumper;
+	Button			LBumper		= RobotMap.LBumper;
+	Button			ButtonB		= RobotMap.ButtonB;
+	Button			ButtonX		= RobotMap.ButtonX;
+
+	public OI()
+	{
+
+	}
+
+	public double leftYValue(double threshold)
+	{ // Gets horizontal left joystick value (how far it is pushed left or right)
+		if (Math.abs(xbox.getY()) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getY();
+		}
+	}
+
+	public double leftXValue(double threshold)
+	{ // Gets vertical left joystick value (how far it is pushed up or down)
+		if (Math.abs(xbox.getX()) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getX();
+		}
+	}
+
+	public static void OI_Method()
+	{
+	}
 }

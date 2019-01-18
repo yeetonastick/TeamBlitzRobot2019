@@ -1,7 +1,7 @@
-package org.usfirst.frc.team2083.commands;
+package frc.robot.commands;
 
-import org.usfirst.frc.team2083.robot.Robot;
-import org.usfirst.frc.team2083.robot.RobotMap;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 

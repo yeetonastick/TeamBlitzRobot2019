@@ -5,16 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team2083.robot;
-
+package frc.robot.old;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import org.usfirst.frc.team2083.commands.CommandBase;
-import org.usfirst.frc.team2083.commands.DriveCommand;
+import frc.robot.commands.CommandBase;
+import frc.robot.commands.DriveCommand;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,7 +26,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot
+public class Robot extends TimedRobot
 {
 	/*
 	 * This function is run when the robot is first started up and should be used

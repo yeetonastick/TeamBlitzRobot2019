@@ -7,38 +7,56 @@
 
 package frc.robot;
 
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.CommandBase;
+import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
+ * functions corresponding to each mode, as described in the IterativeRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static OI m_oi;
 
+ public class Robot extends TimedRobot {
+  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  
+  DriveCommand driveCommand;
+	public static OI oi;
+  
+	Command autonomousCommand;
+	SendableChooser<Command> autoChooser;
+	
+	boolean zerosSet;
+	
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    oi = new OI();
+		CommandBase.init();
+		SmartDashboard.putData(Scheduler.getInstance());
+    
+		CameraServer.getInstance().startAutomaticCapture();
+		
+		driveCommand = new DriveCommand();
+		driveCommand.disableControl();
   }
 
   /**
@@ -112,6 +130,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+  
+    driveCommand.enableControl();
+		driveCommand.start();
   }
 
   /**
@@ -120,6 +141,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    //RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, RobotMap.xBoxController.getX());		
+		SmartDashboard.putNumber("Joystick X value", RobotMap.xBoxController.getX());
   }
 
   /**
