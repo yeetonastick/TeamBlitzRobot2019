@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.CommandBase;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.HatchGrabberCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -36,6 +37,7 @@ import frc.robot.subsystems.ExampleSubsystem;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   
   DriveCommand driveCommand;
+  HatchGrabberCommand hatchGrabberCommand;
 	public static OI oi;
   
 	Command autonomousCommand;
@@ -53,9 +55,11 @@ import frc.robot.subsystems.ExampleSubsystem;
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
     
-		CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture(0);
+    CameraServer.getInstance().startAutomaticCapture(1);
 		
-		driveCommand = new DriveCommand();
+    driveCommand = new DriveCommand();
+    hatchGrabberCommand = new HatchGrabberCommand();
 		driveCommand.disableControl();
   }
 
@@ -132,7 +136,9 @@ import frc.robot.subsystems.ExampleSubsystem;
     }
   
     driveCommand.enableControl();
-		driveCommand.start();
+    hatchGrabberCommand.enableControl();
+    driveCommand.start();
+    hatchGrabberCommand.start();
   }
 
   /**

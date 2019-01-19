@@ -82,6 +82,29 @@ public class OI {
 			return xbox.getX();
 		}
 	}
+	public double rightYValue(double threshold)
+	{ // Gets horizontal left joystick value (how far it is pushed left or right)
+		if (Math.abs(xbox.getRawAxis(5)) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getRawAxis(5);
+		}
+	}
+	public double rightXValue(double threshold)
+	{ // Gets vertical left joystick value (how far it is pushed up or down)
+		if (Math.abs(xbox.getRawAxis(4)) <= threshold)
+		{
+			return 0;
+		}
+		else 
+		{
+			return xbox.getRawAxis(4);
+		}
+	}
+
 
 	public static void OI_Method()
 	{

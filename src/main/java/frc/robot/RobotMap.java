@@ -71,6 +71,8 @@ public class RobotMap {
 		frontRightMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 	
+	public static TalonSRX hatchGripperMotor = new TalonSRX(3);
+
 	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
 	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
 	

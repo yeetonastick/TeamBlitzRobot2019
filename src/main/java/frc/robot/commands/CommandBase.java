@@ -9,7 +9,7 @@ public abstract class CommandBase extends Command
 {
 
 	public static DriveSubsystem driveSubsystem	= new DriveSubsystem();
-	
+
 	public static void init()
 	{
 		SmartDashboard.putData(driveSubsystem);
