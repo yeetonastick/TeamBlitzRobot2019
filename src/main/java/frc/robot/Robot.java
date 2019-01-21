@@ -59,7 +59,7 @@ import frc.robot.subsystems.ExampleSubsystem;
     CameraServer.getInstance().startAutomaticCapture(1);
 		
     driveCommand = new DriveCommand();
-    hatchGrabberCommand = new HatchGrabberCommand();
+    //hatchGrabberCommand = new HatchGrabberCommand();
 		driveCommand.disableControl();
   }
 
@@ -136,9 +136,9 @@ import frc.robot.subsystems.ExampleSubsystem;
     }
   
     driveCommand.enableControl();
-    hatchGrabberCommand.enableControl();
+   // hatchGrabberCommand.enableControl();
     driveCommand.start();
-    hatchGrabberCommand.start();
+    //hatchGrabberCommand.start();
 
   }
 

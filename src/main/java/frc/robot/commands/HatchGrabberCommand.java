@@ -7,12 +7,17 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class HatchGrabberCommand extends CommandBase
 {
-
-	public HatchGrabberCommand()
-	{
-		super("HatchGrabberCommand");		
+	public enum Direction{
+		OPEN, CLOSE, STOP
 	}
 
+	Direction direction;
+
+	public HatchGrabberCommand(Direction direction)
+	{
+		super("HatchGrabberCommand");
+		this.direction = direction;		
+	}
 	@Override
 	protected void initialize()
 	{
@@ -22,8 +27,20 @@ public class HatchGrabberCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4 * (Robot.oi.rightYValue(.25)));
+		switch (direction)
+		{
+			case OPEN:
+			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0.1);
+			break;
+			case CLOSE:
+			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -0.1);
+			break;
+			case STOP:
+			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0.0);
+			break;
 		}
+		//RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4 * (Robot.oi.rightYValue(.25)));
+	}
 
 	@Override
 	protected boolean isFinished()

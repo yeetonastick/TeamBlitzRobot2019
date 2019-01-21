@@ -15,6 +15,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
+import frc.robot.commands.HatchGrabberCommand;
 public class OI {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -56,7 +57,11 @@ public class OI {
 
 	public OI()
 	{
+		LBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.CLOSE));
+		LBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
 
+		RBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.OPEN));
+		RBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
 	}
 
 	public double leftYValue(double threshold)
