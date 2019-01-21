@@ -139,6 +139,7 @@ import frc.robot.subsystems.ExampleSubsystem;
     hatchGrabberCommand.enableControl();
     driveCommand.start();
     hatchGrabberCommand.start();
+
   }
 
   /**
@@ -148,7 +149,7 @@ import frc.robot.subsystems.ExampleSubsystem;
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     //RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, RobotMap.xBoxController.getX());		
-		SmartDashboard.putNumber("Joystick X value", RobotMap.xBoxController.getX());
+    SmartDashboard.putNumber("Joystick X value", RobotMap.xBoxController.getX());
   }
 
   /**
