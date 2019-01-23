@@ -33,7 +33,11 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  /*
+	// Robot IDs
+	public static int PRACTICE_ROBOT_DIO_ID = 0;
+	public static int COMPETITION_ROBOT_DIO_ID = 1;
+
+	/*
 	 * Motor IDs
 	 */
 	

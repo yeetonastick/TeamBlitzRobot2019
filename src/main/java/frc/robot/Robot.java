@@ -51,6 +51,14 @@ import frc.robot.subsystems.ExampleSubsystem;
    */
   @Override
   public void robotInit() {
+
+    if (RobotManager.isCompetitionRobot()) {
+      System.out.println("Competition Robot Initializing");
+    }
+    else if (RobotManager.isPracticeRobot()) {
+      System.out.println("Practice Robot Initializing");
+    }
+
     oi = new OI();
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
