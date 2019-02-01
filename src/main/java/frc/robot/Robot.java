@@ -7,13 +7,19 @@
 
 package frc.robot;
 
+import java.awt.TextField;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardContainer;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.CommandBase;
@@ -54,11 +60,25 @@ import frc.robot.subsystems.ExampleSubsystem;
 
     if (RobotManager.isCompetitionRobot()) {
       System.out.println("Competition Robot Initializing");
+      Shuffleboard.getTab("Robot")
+                  .add("Which Robot?", "Competition")
+                  .withSize(1, 1);
     }
     else if (RobotManager.isPracticeRobot()) {
       System.out.println("Practice Robot Initializing");
+      Shuffleboard.getTab("Robot")
+        .add("Which Robot?", "Practice")
+        .withSize(1, 1);
     }
+    
 
+
+    ShuffleboardTab driveBaseTab = Shuffleboard.getTab("Drivebase");
+    driveBaseTab.add("Tank Drive", 9);
+
+    ShuffleboardLayout encoders = driveBaseTab.getLayout("List Layout", "Encoders");
+    encoders.add("Left Encoder", RobotMap.frontLeftMotor.getSelectedSensorPosition());
+    
     oi = new OI();
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
@@ -69,6 +89,7 @@ import frc.robot.subsystems.ExampleSubsystem;
     driveCommand = new DriveCommand();
     //hatchGrabberCommand = new HatchGrabberCommand();
 		driveCommand.disableControl();
+    
   }
 
   /**

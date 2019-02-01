@@ -9,13 +9,13 @@ public class RobotManager {
         DigitalInput competitionRobotDIO = new DigitalInput(0);
         boolean isSet = competitionRobotDIO.get();
         competitionRobotDIO.close();
-        return isSet;
+        return !isSet;
     }
 
     public static boolean isPracticeRobot() {
         DigitalInput practiceRobotDIO = new DigitalInput(1);
         boolean isSet = practiceRobotDIO.get();
         practiceRobotDIO.close();
-        return isSet;
+        return !isSet;
     }
 }

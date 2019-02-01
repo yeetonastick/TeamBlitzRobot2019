@@ -56,6 +56,10 @@ public class RobotMap {
 		frontLeftMotor.config_kP(0, 1.5, 10);
 		frontLeftMotor.config_kI(0, 0.02, 10);
 		frontLeftMotor.config_kD(0,-0.01, 10);
+		// frontLeftMotor.config_kF(0, 0.0, 10);
+		// frontLeftMotor.config_kP(0, 1.5, 10);
+		// frontLeftMotor.config_kI(0, .003, 10);
+		// frontLeftMotor.config_kD(0, 0, 10);
 		frontLeftMotor.setSelectedSensorPosition(0, 0, 10);
 		//frontLeftMotor.configPulseWidthPeriod_EdgesPerRot(pulseWidthPeriod_EdgesPerRot, timeoutMs);
 	}
@@ -73,6 +77,10 @@ public class RobotMap {
 		frontRightMotor.config_kP(0, 1.5, 10);
 		frontRightMotor.config_kI(0, 0.02, 10);
 		frontRightMotor.config_kD(0, -0.01, 10);
+		// frontRightMotor.config_kF(0, 0.0, 10);
+		// frontRightMotor.config_kP(0, 1.5, 10);
+		// frontRightMotor.config_kI(0, .003, 10);
+		// frontRightMotor.config_kD(0, 0, 10);
 		frontRightMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 	
