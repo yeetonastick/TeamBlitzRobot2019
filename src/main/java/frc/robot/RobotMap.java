@@ -11,7 +11,9 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 // import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -34,8 +36,11 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
 	// Robot IDs
-	public static int PRACTICE_ROBOT_DIO_ID = 0;
-	public static int COMPETITION_ROBOT_DIO_ID = 1;
+	public static int COMPETITION_ROBOT_DIO_ID = 0;
+	public static int PRACTICE_ROBOT_DIO_ID = 1;
+
+	// Digital output for Nvidia power control
+	public static int NVIDIA_POWER_CONTROL_DIO_ID = 2;
 
 	/*
 	 * Motor IDs
@@ -88,6 +93,15 @@ public class RobotMap {
 
 	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
 	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
+
+	// Pneumatic Solenoids
+	public static DoubleSolenoid exampleDoubleSolenoid = new DoubleSolenoid(0, 1);
+
+	// NVidia Power Control Digital Output, setting to false is equivalent to pushing the power button
+	public static DigitalOutput nvidiaPowerControlDigitalOutput = new DigitalOutput(NVIDIA_POWER_CONTROL_DIO_ID);
+	static{
+		nvidiaPowerControlDigitalOutput.set(true); //set to false to turn on
+	}
 	
 	/*
 	 * Joystick IDs
