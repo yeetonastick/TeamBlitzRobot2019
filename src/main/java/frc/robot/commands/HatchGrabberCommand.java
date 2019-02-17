@@ -3,15 +3,21 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+import javax.lang.model.util.ElementScanner6;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class HatchGrabberCommand extends CommandBase
 {
+
+	static boolean onceOnly = false;
+
 	public enum Direction{
 		OPEN, CLOSE, STOP
 	}
 
 	Direction direction;
+	float speed = 0.0f;
 
 	public HatchGrabberCommand(Direction direction)
 	{
@@ -30,14 +36,40 @@ public class HatchGrabberCommand extends CommandBase
 		switch (direction)
 		{
 			case OPEN:
-			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0.1);
-			break;
+				HatchGrabberCommand.onceOnly = true;
+				if (!RobotMap.hatchGripperMotor.getSensorCollection().isRevLimitSwitchClosed()){
+					speed += .002f;
+					System.out.println("Speed: " + speed);
+					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+				}
+				else{
+					speed = 0;
+					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+					//System.out.println("At Limit");
+				}
+					
+				break;
 			case CLOSE:
-			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -0.1);
-			break;
+				HatchGrabberCommand.onceOnly = true;
+				if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
+					speed += .002f;
+					System.out.println("Speed: " + speed);
+					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -speed);
+				}
+				else{
+					speed = 0;
+					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+					//System.out.println("At Limit");
+				}
+				break;
 			case STOP:
-			RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0.0);
-			break;
+					speed = 0;
+					if (HatchGrabberCommand.onceOnly) {
+						System.out.println("Button Released");
+						HatchGrabberCommand.onceOnly = false;
+					}
+					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+				break;
 		}
 		//RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4 * (Robot.oi.rightYValue(.25)));
 	}
@@ -45,7 +77,7 @@ public class HatchGrabberCommand extends CommandBase
 	@Override
 	protected boolean isFinished()
 	{
-		return false;
+		return Direction.STOP == direction;
 	}
 
 	@Override

@@ -83,8 +83,8 @@ import frc.robot.subsystems.ExampleSubsystem;
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
     
-    CameraServer.getInstance().startAutomaticCapture(0);
-    CameraServer.getInstance().startAutomaticCapture(1);
+    // CameraServer.getInstance().startAutomaticCapture(0);
+    // CameraServer.getInstance().startAutomaticCapture(1);
 		
     driveCommand = new DriveCommand();
     //hatchGrabberCommand = new HatchGrabberCommand();

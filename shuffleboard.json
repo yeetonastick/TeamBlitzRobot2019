@@ -336,6 +336,61 @@
               "_source0": "network_table:///SmartDashboard/Rope Climbing Motor Current",
               "_title": "Rope Climbing Motor Current"
             }
+          },
+          "2,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Drive Chooser/selected",
+              "_title": "Drive Chooser/selected"
+            }
+          },
+          "3,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Pneumatic Chooser/selected",
+              "_title": "Pneumatic Chooser/selected"
+            }
+          },
+          "4,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Mode Chooser/selected",
+              "_title": "Mode Chooser/selected"
+            }
+          },
+          "8,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Manip Chooser/selected",
+              "_title": "Manip Chooser/selected"
+            }
+          },
+          "9,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Chooser/selected",
+              "_title": "Arm Chooser/selected"
+            }
           }
         }
       }
@@ -373,7 +428,75 @@
               "_source0": "network_table:///LiveWindow/Ungrouped",
               "_title": "Ungrouped",
               "Layout/Label position": "BOTTOM",
-              "_children": []
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/DigitalOutput[2]/Value",
+                  "_title": "LiveWindow/Ungrouped/DigitalOutput[2]/Value",
+                  "Colors/Color when true": "#7CFC00FF",
+                  "Colors/Color when false": "#8B0000FF"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/DoubleSolenoid[0,2]/Value",
+                  "_title": "LiveWindow/Ungrouped/DoubleSolenoid[0,2]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/DoubleSolenoid[0,0]/Value",
+                  "_title": "LiveWindow/Ungrouped/DoubleSolenoid[0,0]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/DoubleSolenoid[0,4]/Value",
+                  "_title": "LiveWindow/Ungrouped/DoubleSolenoid[0,4]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [4]/Value",
+                  "_title": "Talon SRX [4]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/SparkMax[3]/Value",
+                  "_title": "SparkMax[3]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Victor SPX [2]/Value",
+                  "_title": "Victor SPX [2]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [7]/Value",
+                  "_title": "Talon SRX [7]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [5]/Value",
+                  "_title": "Talon SRX [5]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [3]/Value",
+                  "_title": "Talon SRX [3]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [8]/Value",
+                  "_title": "Talon SRX [8]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Victor SPX [1]/Value",
+                  "_title": "Victor SPX [1]/Value"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/Talon SRX [6]/Value",
+                  "_title": "Talon SRX [6]/Value"
+                }
+              ]
             }
           },
           "4,0": {

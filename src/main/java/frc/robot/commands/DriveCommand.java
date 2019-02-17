@@ -41,21 +41,22 @@ public class DriveCommand extends CommandBase
 			double rightTargetVelocity_UnitsPer100ms;
 		
 			if (RobotManager.isCompetitionRobot()) {
-				maxVelocity = -42; // inches per second
+				maxVelocity = 42; // inches per second
 				turnSpeedReducer = 3;
 				velocityConstant = (1440 / (4 * 10) * maxVelocity);
-				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
-				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
+				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
+				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
 				RobotMap.frontLeftMotor.set(ControlMode.Velocity, leftTargetVelocity_UnitsPer100ms);
 				RobotMap.frontRightMotor.set(ControlMode.Velocity, rightTargetVelocity_UnitsPer100ms);
 		//		RobotMap.frontRightMotor.set(ControlMode.Velocity, 0);
 			} 
 			else if (RobotManager.isPracticeRobot()) {
-				maxVelocity = -5;
+				maxVelocity = -42;
 				turnSpeedReducer = 3;
-				velocityConstant = (1440 / (4 * 10) * maxVelocity);
-				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
-				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
+				double velocityConstantRight = (1440 / (4 * 10) * maxVelocity);
+				double velocityConstantLeft = (1000 / (4 * 10) * maxVelocity);
+				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstantLeft;
+				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.25) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstantRight;
 				RobotMap.frontLeftMotor.set(ControlMode.Velocity, leftTargetVelocity_UnitsPer100ms);
 				RobotMap.frontRightMotor.set(ControlMode.Velocity, rightTargetVelocity_UnitsPer100ms);
 		//		RobotMap.frontRightMotor.set(ControlMode.Velocity, 0);

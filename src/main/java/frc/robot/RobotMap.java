@@ -8,6 +8,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -61,6 +63,7 @@ public class RobotMap {
 		frontLeftMotor.config_kP(0, 1.5, 10);
 		frontLeftMotor.config_kI(0, 0.02, 10);
 		frontLeftMotor.config_kD(0,-0.01, 10);
+		// Practice Robot Values:
 		// frontLeftMotor.config_kF(0, 0.0, 10);
 		// frontLeftMotor.config_kP(0, 1.5, 10);
 		// frontLeftMotor.config_kI(0, .003, 10);
@@ -82,6 +85,7 @@ public class RobotMap {
 		frontRightMotor.config_kP(0, 1.5, 10);
 		frontRightMotor.config_kI(0, 0.02, 10);
 		frontRightMotor.config_kD(0, -0.01, 10);
+		// Practice Robot Vlaues:
 		// frontRightMotor.config_kF(0, 0.0, 10);
 		// frontRightMotor.config_kP(0, 1.5, 10);
 		// frontRightMotor.config_kI(0, .003, 10);
@@ -90,12 +94,22 @@ public class RobotMap {
 	}
 	
 	public static TalonSRX hatchGripperMotor = new TalonSRX(3);
+	static {
+		hatchGripperMotor.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector,
+														 LimitSwitchNormal.Disabled,
+														 30);
+		hatchGripperMotor.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector,
+														 LimitSwitchNormal.Disabled,
+														 30);
+	}
 
 	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
 	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
 
 	// Pneumatic Solenoids
-	public static DoubleSolenoid exampleDoubleSolenoid = new DoubleSolenoid(0, 1);
+	public static DoubleSolenoid stageOneDoubleSolenoid = new DoubleSolenoid(2, 3);
+	public static DoubleSolenoid stageTwoDoubleSolenoid = new DoubleSolenoid(4,5);
+	public static DoubleSolenoid sliderDoubleSolenoid = new DoubleSolenoid(0, 1); 
 
 	// NVidia Power Control Digital Output, setting to false is equivalent to pushing the power button
 	public static DigitalOutput nvidiaPowerControlDigitalOutput = new DigitalOutput(NVIDIA_POWER_CONTROL_DIO_ID);

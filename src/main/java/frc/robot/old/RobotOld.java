@@ -48,7 +48,7 @@ public class RobotOld extends TimedRobot
 		CommandBase.init();
 		SmartDashboard.putData(Scheduler.getInstance());
 
-		CameraServer.getInstance().startAutomaticCapture();
+		// CameraServer.getInstance().startAutomaticCapture();
 		
 		driveCommand = new DriveCommand();
 		driveCommand.disableControl();

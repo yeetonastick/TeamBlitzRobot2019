@@ -2,23 +2,24 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.old.RobotOld;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-public class PneumaticCommand extends CommandBase
+public class SliderCommand extends CommandBase
 {
 	public enum Direction{
-		OPEN, CLOSE, STOP
+		RETRACT, EXTEND, STOP
 	}
 
 	Direction direction;
 
-	public PneumaticCommand(Direction direction)
+	public SliderCommand(Direction direction)
 	{
-		super("PneumaticCommand");
-		this.direction = direction;		
+		super("SliderCommand");
+		this.direction = direction;				
 	}
 	@Override
 	protected void initialize()
@@ -31,14 +32,14 @@ public class PneumaticCommand extends CommandBase
 	{
 		switch (direction)
 		{
-			case OPEN:
-            RobotMap.exampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-			break;
-            case CLOSE:
-            RobotMap.exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+			case RETRACT:
+            RobotMap.sliderDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+            break;
+            case EXTEND:
+            RobotMap.sliderDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
             break;
             case STOP:
-            RobotMap.exampleDoubleSolenoid.set(DoubleSolenoid.Value.kOff);
+            RobotMap.sliderDoubleSolenoid.set(DoubleSolenoid.Value.kOff);
             break;
 		}
 	}

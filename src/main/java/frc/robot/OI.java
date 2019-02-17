@@ -16,8 +16,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 import frc.robot.commands.HatchGrabberCommand;
-import frc.robot.commands.PneumaticCommand;
-import frc.robot.commands.PneumaticCommand.Direction;
+import frc.robot.commands.SliderCommand;
+import frc.robot.commands.ElevatorCommand;
+import frc.robot.commands.ElevatorCommand.Direction;
 public class OI {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -57,6 +58,9 @@ public class OI {
 	Button			ButtonB		= RobotMap.ButtonB;
 	Button			ButtonX		= RobotMap.ButtonX;
 
+	double lastY=0;
+	double maxAccel = 0.01;
+
 	public OI()
 	{
 		LBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.CLOSE));
@@ -65,22 +69,42 @@ public class OI {
 		RBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.OPEN));
 		RBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
 
-		ButtonY.whileHeld(new PneumaticCommand(PneumaticCommand.Direction.OPEN));
-		ButtonY.whenReleased(new PneumaticCommand(PneumaticCommand.Direction.STOP));
+		ButtonY.whileHeld(new ElevatorCommand(ElevatorCommand.Direction.STAGETWO));
+		ButtonY.whenReleased(new ElevatorCommand(ElevatorCommand.Direction.STOP));
 
-		ButtonA.whileHeld(new PneumaticCommand(PneumaticCommand.Direction.CLOSE));
-		ButtonA.whenReleased(new PneumaticCommand(PneumaticCommand.Direction.STOP));
+		ButtonB.whileHeld(new ElevatorCommand(ElevatorCommand.Direction.STAGEONE));
+		ButtonB.whenReleased(new ElevatorCommand(ElevatorCommand.Direction.STOP));
+
+		ButtonA.whileHeld(new ElevatorCommand(ElevatorCommand.Direction.STAGEZERO));
+		ButtonA.whenReleased(new ElevatorCommand(ElevatorCommand.Direction.STOP));
+
+		ButtonStart.whileHeld(new SliderCommand(SliderCommand.Direction.EXTEND));
+		ButtonStart.whenReleased(new SliderCommand(SliderCommand.Direction.STOP));
+
+		ButtonBack.whileHeld(new SliderCommand(SliderCommand.Direction.RETRACT));
+		ButtonBack.whenReleased(new SliderCommand(SliderCommand.Direction.STOP));
 	}
 
 	public double leftYValue(double threshold)
 	{ // Gets horizontal left joystick value (how far it is pushed left or right)
 		if (Math.abs(xbox.getY()) <= threshold)
 		{
+			lastY = 0;
 			return 0;
 		}
 		else 
 		{
-			return xbox.getY();
+			double thisY = xbox.getY();
+			if (thisY - lastY >= maxAccel){
+				thisY = lastY + maxAccel;
+			}
+			else if (thisY - lastY <= -maxAccel){
+				thisY = lastY - maxAccel;
+			}
+			lastY = thisY;
+			return thisY;
+
+
 		}
 	}
 
