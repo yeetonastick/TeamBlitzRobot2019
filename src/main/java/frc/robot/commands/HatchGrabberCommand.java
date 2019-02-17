@@ -39,13 +39,11 @@ public class HatchGrabberCommand extends CommandBase
 				HatchGrabberCommand.onceOnly = true;
 				if (!RobotMap.hatchGripperMotor.getSensorCollection().isRevLimitSwitchClosed()){
 					speed += .002f;
-					System.out.println("Speed: " + speed);
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
 				}
 				else{
 					speed = 0;
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-					//System.out.println("At Limit");
 				}
 					
 				break;
@@ -53,21 +51,15 @@ public class HatchGrabberCommand extends CommandBase
 				HatchGrabberCommand.onceOnly = true;
 				if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
 					speed += .002f;
-					System.out.println("Speed: " + speed);
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -speed);
 				}
 				else{
 					speed = 0;
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-					//System.out.println("At Limit");
 				}
 				break;
 			case STOP:
 					speed = 0;
-					if (HatchGrabberCommand.onceOnly) {
-						System.out.println("Button Released");
-						HatchGrabberCommand.onceOnly = false;
-					}
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
 				break;
 		}
