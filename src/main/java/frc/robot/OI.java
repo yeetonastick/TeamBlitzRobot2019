@@ -87,24 +87,21 @@ public class OI {
 
 	public double leftYValue(double threshold)
 	{ // Gets horizontal left joystick value (how far it is pushed left or right)
-		if (Math.abs(xbox.getY()) <= threshold)
+		double thisY = xbox.getY();
+		if (thisY - lastY >= maxAccel){
+			thisY = lastY + maxAccel;
+		}
+		else if (thisY - lastY <= -maxAccel){
+			thisY = lastY - maxAccel;
+		}
+		lastY = thisY;
+
+		if (Math.abs(thisY) <= threshold)
 		{
-			lastY = 0;
 			return 0;
 		}
-		else 
-		{
-			double thisY = xbox.getY();
-			if (thisY - lastY >= maxAccel){
-				thisY = lastY + maxAccel;
-			}
-			else if (thisY - lastY <= -maxAccel){
-				thisY = lastY - maxAccel;
-			}
-			lastY = thisY;
+		else {
 			return thisY;
-
-
 		}
 	}
 

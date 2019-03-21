@@ -22,12 +22,12 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.cameraserver.CameraServer;;
 import frc.robot.commands.CommandBase;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.HatchGrabberCommand;
 import frc.robot.subsystems.ExampleSubsystem;
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -57,7 +57,7 @@ import frc.robot.subsystems.ExampleSubsystem;
    */
   @Override
   public void robotInit() {
-
+    CameraServer.getInstance().startAutomaticCapture();
     if (RobotManager.isCompetitionRobot()) {
       System.out.println("Competition Robot Initializing");
       Shuffleboard.getTab("Robot")

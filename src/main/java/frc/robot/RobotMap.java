@@ -12,11 +12,13 @@ import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 // import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -62,7 +64,7 @@ public class RobotMap {
 		frontLeftMotor.config_kF(0, 0.0, 10);
 		frontLeftMotor.config_kP(0, 1.5, 10);
 		frontLeftMotor.config_kI(0, 0.02, 10);
-		frontLeftMotor.config_kD(0,-0.01, 10);
+		frontLeftMotor.config_kD(0, 0.0, 10);
 		// Practice Robot Values:
 		// frontLeftMotor.config_kF(0, 0.0, 10);
 		// frontLeftMotor.config_kP(0, 1.5, 10);
@@ -70,7 +72,10 @@ public class RobotMap {
 		// frontLeftMotor.config_kD(0, 0, 10);
 		frontLeftMotor.setSelectedSensorPosition(0, 0, 10);
 		//frontLeftMotor.configPulseWidthPeriod_EdgesPerRot(pulseWidthPeriod_EdgesPerRot, timeoutMs);
+
+		frontLeftMotor.set(ControlMode.PercentOutput, 0);
 	}
+
 	public static TalonSRX frontRightMotor = new TalonSRX(1); // 1
 	static {
 		frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -84,13 +89,15 @@ public class RobotMap {
 		frontRightMotor.config_kF(0, 0.0, 10);
 		frontRightMotor.config_kP(0, 1.5, 10);
 		frontRightMotor.config_kI(0, 0.02, 10);
-		frontRightMotor.config_kD(0, -0.01, 10);
+		frontRightMotor.config_kD(0, 0.0, 10);
 		// Practice Robot Vlaues:
 		// frontRightMotor.config_kF(0, 0.0, 10);
 		// frontRightMotor.config_kP(0, 1.5, 10);
 		// frontRightMotor.config_kI(0, .003, 10);
 		// frontRightMotor.config_kD(0, 0, 10);
 		frontRightMotor.setSelectedSensorPosition(0, 0, 10);
+	
+		frontRightMotor.set(ControlMode.PercentOutput, 0);
 	}
 	
 	public static TalonSRX hatchGripperMotor = new TalonSRX(3);
@@ -104,7 +111,13 @@ public class RobotMap {
 	}
 
 	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
+	static {
+		backRightMotor.set(ControlMode.PercentOutput, 0);
+	}
 	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
+	static {
+		backLeftMotor.set(ControlMode.PercentOutput, 0);
+	}
 
 	// Pneumatic Solenoids
 	public static DoubleSolenoid stageOneDoubleSolenoid = new DoubleSolenoid(2, 3);
