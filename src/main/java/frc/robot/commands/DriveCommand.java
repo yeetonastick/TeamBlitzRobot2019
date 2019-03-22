@@ -23,8 +23,8 @@ public class DriveCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		// RobotMap.backLeftMotor.follow(RobotMap.frontLeftMotor);
-		// RobotMap.backRightMotor.follow(RobotMap.frontRightMotor);
+		RobotMap.backLeftMotor.follow(RobotMap.frontLeftMotor);
+		RobotMap.backRightMotor.follow(RobotMap.frontRightMotor);
 	//	RobotMap.frontLeftMotor.set(ControlMode.PercentOutput, -.96 * (Robot.oi.leftYValue(.25) - Robot.oi.leftXValue(.30)));
 	//	RobotMap.frontRightMotor.set(ControlMode.PercentOutput, 1 * (Robot.oi.leftYValue(.25) + Robot.oi.leftXValue(.30)));
 
@@ -44,8 +44,8 @@ public class DriveCommand extends CommandBase
 				maxVelocity = 42; // inches per second
 				turnSpeedReducer = 3;
 				velocityConstant = (1440 / (4 * 10) * maxVelocity);
-				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
-				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
+				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
+				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
 				RobotMap.frontLeftMotor.set(ControlMode.Velocity, leftTargetVelocity_UnitsPer100ms);
 				RobotMap.frontRightMotor.set(ControlMode.Velocity, rightTargetVelocity_UnitsPer100ms);
 				

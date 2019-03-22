@@ -68,5 +68,6 @@ public class SliderCommand extends CommandBase
 
 	public void disableControl()
 	{
+		RobotMap.sliderDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 }

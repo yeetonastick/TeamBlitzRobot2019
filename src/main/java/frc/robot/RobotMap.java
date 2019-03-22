@@ -64,7 +64,7 @@ public class RobotMap {
 		frontLeftMotor.config_kF(0, 0.0, 10);
 		frontLeftMotor.config_kP(0, 1.5, 10);
 		frontLeftMotor.config_kI(0, 0.02, 10);
-		frontLeftMotor.config_kD(0, 0.0, 10);
+		frontLeftMotor.config_kD(0, -0.01, 10);
 		// Practice Robot Values:
 		// frontLeftMotor.config_kF(0, 0.0, 10);
 		// frontLeftMotor.config_kP(0, 1.5, 10);
@@ -89,7 +89,7 @@ public class RobotMap {
 		frontRightMotor.config_kF(0, 0.0, 10);
 		frontRightMotor.config_kP(0, 1.5, 10);
 		frontRightMotor.config_kI(0, 0.02, 10);
-		frontRightMotor.config_kD(0, 0.0, 10);
+		frontRightMotor.config_kD(0, -0.01, 10);
 		// Practice Robot Vlaues:
 		// frontRightMotor.config_kF(0, 0.0, 10);
 		// frontRightMotor.config_kP(0, 1.5, 10);

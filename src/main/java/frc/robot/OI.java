@@ -59,7 +59,9 @@ public class OI {
 	Button			ButtonX		= RobotMap.ButtonX;
 
 	double lastY=0;
-	double maxAccel = 0.01;
+	double lastX=0;
+	double maxAccelY = 0.005;
+	double maxAccelX = 0.2;
 
 	public OI()
 	{
@@ -88,11 +90,11 @@ public class OI {
 	public double leftYValue(double threshold)
 	{ // Gets horizontal left joystick value (how far it is pushed left or right)
 		double thisY = xbox.getY();
-		if (thisY - lastY >= maxAccel){
-			thisY = lastY + maxAccel;
+		if (thisY - lastY >= maxAccelY){
+			thisY = lastY + maxAccelY;
 		}
-		else if (thisY - lastY <= -maxAccel){
-			thisY = lastY - maxAccel;
+		else if (thisY - lastY <= -maxAccelY){
+			thisY = lastY - maxAccelY;
 		}
 		lastY = thisY;
 
@@ -107,13 +109,21 @@ public class OI {
 
 	public double leftXValue(double threshold)
 	{ // Gets vertical left joystick value (how far it is pushed up or down)
-		if (Math.abs(xbox.getX()) <= threshold)
+		double thisX = xbox.getX();
+		if (thisX - lastX >= maxAccelX){
+			thisX = lastX + maxAccelX;
+		}
+		else if (thisX - lastX <= -maxAccelX){
+			thisX = lastX - maxAccelX;
+		}
+		lastX = thisX;
+
+		if (Math.abs(thisX) <= threshold)
 		{
 			return 0;
 		}
-		else 
-		{
-			return xbox.getX();
+		else {
+			return thisX;
 		}
 	}
 	public double rightYValue(double threshold)

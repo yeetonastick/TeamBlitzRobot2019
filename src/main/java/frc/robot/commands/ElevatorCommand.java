@@ -75,5 +75,7 @@ public class ElevatorCommand extends CommandBase
 
 	public void disableControl()
 	{
-	}
+		//Set elevator to lowest position when disabled
+		RobotMap.stageOneDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		RobotMap.stageTwoDoubleSolenoid.set(DoubleSolenoid.Value.kForward);	}
 }

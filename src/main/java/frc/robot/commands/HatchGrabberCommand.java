@@ -10,7 +10,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class HatchGrabberCommand extends CommandBase
 {
 
-	static boolean onceOnly = false;
+	//static boolean onceOnly = false; Delete if not broken
 
 	public enum Direction{
 		OPEN, CLOSE, STOP
@@ -36,7 +36,7 @@ public class HatchGrabberCommand extends CommandBase
 		switch (direction)
 		{
 			case OPEN:
-				HatchGrabberCommand.onceOnly = true;
+				//HatchGrabberCommand.onceOnly = true;
 				if (!RobotMap.hatchGripperMotor.getSensorCollection().isRevLimitSwitchClosed()){
 					speed += .002f;
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
@@ -48,7 +48,7 @@ public class HatchGrabberCommand extends CommandBase
 					
 				break;
 			case CLOSE:
-				HatchGrabberCommand.onceOnly = true;
+				//HatchGrabberCommand.onceOnly = true;
 				if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
 					speed += .002f;
 					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -speed);

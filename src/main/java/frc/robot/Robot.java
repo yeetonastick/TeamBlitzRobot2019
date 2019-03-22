@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.cameraserver.CameraServer;;
+import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.commands.CommandBase;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
@@ -144,6 +144,10 @@ import frc.robot.subsystems.ExampleSubsystem;
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
     }
+    driveCommand.enableControl();
+    // hatchGrabberCommand.enableControl();
+     driveCommand.start();
+     //hatchGrabberCommand.start();
   }
 
   /**
