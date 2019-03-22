@@ -37,31 +37,26 @@ public class HatchGrabberCommand extends CommandBase
 		{
 			case OPEN:
 				//HatchGrabberCommand.onceOnly = true;
-				if (!RobotMap.hatchGripperMotor.getSensorCollection().isRevLimitSwitchClosed()){
-					speed += .002f;
-					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-				}
-				else{
-					speed = 0;
-					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-				}
+				// if (!RobotMap.hatchGripperMotor.getSensorCollection().isRevLimitSwitchClosed()){
+				// 	speed += .002f;
+				// 	RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+				// }
+				// else{
+				// 	speed = 0;
+				// 	RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
+				//}
+				RobotMap.hatchGripperMotor.set(ControlMode.Position, 8500);
 					
 				break;
 			case CLOSE:
-				//HatchGrabberCommand.onceOnly = true;
-				if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
-					speed += .002f;
-					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -speed);
-				}
-				else{
-					speed = 0;
-					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-				}
-				break;
-			case STOP:
-					speed = 0;
-					RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, speed);
-				break;
+			if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
+				RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.3);
+			}
+			else{
+				//RobotMap.hatchGripperMotor.setSelectedSensorPosition(0, 0, 10);
+				RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0);
+			}
+			break;
 		}
 		//RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4 * (Robot.oi.rightYValue(.25)));
 	}

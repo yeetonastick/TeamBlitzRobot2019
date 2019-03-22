@@ -108,6 +108,19 @@ public class RobotMap {
 		hatchGripperMotor.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector,
 														 LimitSwitchNormal.Disabled,
 														 30);
+														 frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		hatchGripperMotor.setSensorPhase(false); //Positive velocity corresponds to green light on Talon
+		hatchGripperMotor.setInverted(false);
+		hatchGripperMotor.configNominalOutputForward(0, 10);
+		hatchGripperMotor.configNominalOutputReverse(0, 10);
+		hatchGripperMotor.configPeakOutputForward(1, 10);
+		hatchGripperMotor.configPeakOutputReverse(-1, 10);
+		hatchGripperMotor.configAllowableClosedloopError(0, 0, 10);
+		hatchGripperMotor.config_kF(0, 0.0, 10);
+		hatchGripperMotor.config_kP(0, 	.09, 10);
+		hatchGripperMotor.config_kI(0, .0003, 10);
+		hatchGripperMotor.config_kD(0, 0, 10);
+		hatchGripperMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
