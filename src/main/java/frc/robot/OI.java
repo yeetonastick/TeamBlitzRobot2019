@@ -61,15 +61,16 @@ public class OI {
 	double lastY=0;
 	double lastX=0;
 	double maxAccelY = 0.005;
-	double maxAccelX = 0.2;
+	double maxDecelY = 0.005;
+	double maxAccelX = 1;
 
 	public OI()
 	{
-		LBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.CLOSE));
-		LBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
+		// LBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.CLOSE));
+		// LBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
 
-		RBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.OPEN));
-		RBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
+		// RBumper.whileHeld(new HatchGrabberCommand(HatchGrabberCommand.Direction.OPEN));
+		// RBumper.whenReleased(new HatchGrabberCommand(HatchGrabberCommand.Direction.STOP));
 
 		ButtonY.whileHeld(new ElevatorCommand(ElevatorCommand.Direction.STAGETWO));
 		ButtonY.whenReleased(new ElevatorCommand(ElevatorCommand.Direction.STOP));
@@ -93,8 +94,8 @@ public class OI {
 		if (thisY - lastY >= maxAccelY){
 			thisY = lastY + maxAccelY;
 		}
-		else if (thisY - lastY <= -maxAccelY){
-			thisY = lastY - maxAccelY;
+		else if (thisY - lastY <= -maxDecelY){
+			thisY = lastY - maxDecelY;
 		}
 		lastY = thisY;
 

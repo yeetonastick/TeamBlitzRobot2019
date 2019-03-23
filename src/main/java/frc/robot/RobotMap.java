@@ -54,6 +54,7 @@ public class RobotMap {
 	public static TalonSRX frontLeftMotor = new TalonSRX(2); // 2
 	static {
 		frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		frontLeftMotor.configPeakCurrentLimit(12);
 		frontLeftMotor.setSensorPhase(true); //Positive velocity corresponds to green light on Talon
 		frontLeftMotor.setInverted(false);
 		frontLeftMotor.configNominalOutputForward(0, 10);
@@ -79,6 +80,7 @@ public class RobotMap {
 	public static TalonSRX frontRightMotor = new TalonSRX(1); // 1
 	static {
 		frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		frontRightMotor.configPeakCurrentLimit(12); //Peak current
 		frontRightMotor.setSensorPhase(true);
 		frontRightMotor.setInverted(false);
 		frontRightMotor.configNominalOutputForward(0, 10);
@@ -119,7 +121,7 @@ public class RobotMap {
 		hatchGripperMotor.config_kF(0, 0.0, 10);
 		hatchGripperMotor.config_kP(0, 	.09, 10);
 		hatchGripperMotor.config_kI(0, .0003, 10);
-		hatchGripperMotor.config_kD(0, 0, 10);
+		hatchGripperMotor.config_kD(0, -10, 10);
 		hatchGripperMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 

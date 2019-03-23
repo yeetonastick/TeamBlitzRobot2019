@@ -13,12 +13,16 @@ public class HatchGrabberCommand extends CommandBase
 	//static boolean onceOnly = false; Delete if not broken
 
 	public enum Direction{
-		OPEN, CLOSE, STOP
+		INITIALIZE, OPEN, CLOSE
 	}
 
 	Direction direction;
 	float speed = 0.0f;
-
+	public HatchGrabberCommand()
+	{
+		super("HatchGrabberCommand");
+		this.direction = Direction.CLOSE;		
+	}
 	public HatchGrabberCommand(Direction direction)
 	{
 		super("HatchGrabberCommand");
@@ -33,6 +37,12 @@ public class HatchGrabberCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
+		if(Robot.oi.xbox.getRawButton(6)){
+			direction = Direction.OPEN;
+		}
+		else if(Robot.oi.xbox.getRawButton(5)){
+			direction = Direction.CLOSE;
+		}
 		switch (direction)
 		{
 			case OPEN:
@@ -50,13 +60,14 @@ public class HatchGrabberCommand extends CommandBase
 				break;
 			case CLOSE:
 			if (!RobotMap.hatchGripperMotor.getSensorCollection().isFwdLimitSwitchClosed()){
-				RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.3);
+				RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4);
 			}
 			else{
-				//RobotMap.hatchGripperMotor.setSelectedSensorPosition(0, 0, 10);
+				RobotMap.hatchGripperMotor.setSelectedSensorPosition(0, 0, 10);
 				RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, 0);
 			}
 			break;
+
 		}
 		//RobotMap.hatchGripperMotor.set(ControlMode.PercentOutput, -.4 * (Robot.oi.rightYValue(.25)));
 	}
@@ -64,7 +75,7 @@ public class HatchGrabberCommand extends CommandBase
 	@Override
 	protected boolean isFinished()
 	{
-		return Direction.STOP == direction;
+		return false;
 	}
 
 	@Override

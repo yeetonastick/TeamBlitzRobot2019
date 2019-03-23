@@ -42,10 +42,10 @@ public class DriveCommand extends CommandBase
 		
 			if (RobotManager.isCompetitionRobot()) {
 				maxVelocity = 42; // inches per second
-				turnSpeedReducer = 3;
+				turnSpeedReducer = 4.8;
 				velocityConstant = (1440 / (4 * 10) * maxVelocity);
-				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) - Robot.oi.leftXValue(.25) / turnSpeedReducer) * -velocityConstant;
-				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.1) + Robot.oi.leftXValue(.25) / turnSpeedReducer) * velocityConstant;
+				leftTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.05) - Robot.oi.leftXValue(.05) / turnSpeedReducer) * -velocityConstant;
+				rightTargetVelocity_UnitsPer100ms = (Robot.oi.leftYValue(.05) + Robot.oi.leftXValue(.05) / turnSpeedReducer) * velocityConstant;
 				RobotMap.frontLeftMotor.set(ControlMode.Velocity, leftTargetVelocity_UnitsPer100ms);
 				RobotMap.frontRightMotor.set(ControlMode.Velocity, rightTargetVelocity_UnitsPer100ms);
 				

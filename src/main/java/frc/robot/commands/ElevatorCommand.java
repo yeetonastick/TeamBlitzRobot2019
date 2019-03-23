@@ -51,6 +51,7 @@ public class ElevatorCommand extends CommandBase
 		}
 	}
 
+
 	@Override
 	protected boolean isFinished()
 	{
@@ -77,5 +78,6 @@ public class ElevatorCommand extends CommandBase
 	{
 		//Set elevator to lowest position when disabled
 		RobotMap.stageOneDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-		RobotMap.stageTwoDoubleSolenoid.set(DoubleSolenoid.Value.kForward);	}
+		RobotMap.stageTwoDoubleSolenoid.set(DoubleSolenoid.Value.kForward);	
+	}
 }

@@ -25,8 +25,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.commands.CommandBase;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.ElevatorCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.HatchGrabberCommand;
+import frc.robot.commands.SliderCommand;
+import frc.robot.commands.ElevatorCommand.Direction;
 import frc.robot.subsystems.ExampleSubsystem;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -44,6 +47,8 @@ import frc.robot.subsystems.ExampleSubsystem;
   
   DriveCommand driveCommand;
   HatchGrabberCommand hatchGrabberCommand;
+  ElevatorCommand elevatorCommand;
+  SliderCommand sliderCommand;
 	public static OI oi;
   
 	Command autonomousCommand;
@@ -87,7 +92,8 @@ import frc.robot.subsystems.ExampleSubsystem;
     // CameraServer.getInstance().startAutomaticCapture(1);
 		
     driveCommand = new DriveCommand();
-    //hatchGrabberCommand = new HatchGrabberCommand();
+    hatchGrabberCommand = new HatchGrabberCommand();
+    hatchGrabberCommand.disableControl();
 		driveCommand.disableControl();
     
   }
@@ -111,6 +117,11 @@ import frc.robot.subsystems.ExampleSubsystem;
    */
   @Override
   public void disabledInit() {
+    System.out.println("Disable Init");
+    elevatorCommand = new ElevatorCommand(ElevatorCommand.Direction.STAGEZERO);
+    sliderCommand = new SliderCommand(SliderCommand.Direction.RETRACT);
+    elevatorCommand.disableControl();
+    sliderCommand.disableControl();
   }
 
   @Override
@@ -145,9 +156,9 @@ import frc.robot.subsystems.ExampleSubsystem;
       m_autonomousCommand.start();
     }
     driveCommand.enableControl();
-    // hatchGrabberCommand.enableControl();
+     hatchGrabberCommand.enableControl();
      driveCommand.start();
-     //hatchGrabberCommand.start();
+     hatchGrabberCommand.start();
   }
 
   /**
@@ -169,9 +180,9 @@ import frc.robot.subsystems.ExampleSubsystem;
     }
   
     driveCommand.enableControl();
-   // hatchGrabberCommand.enableControl();
+    hatchGrabberCommand.enableControl();
     driveCommand.start();
-    //hatchGrabberCommand.start();
+    hatchGrabberCommand.start();
 
   }
 
